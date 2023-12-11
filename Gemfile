@@ -1,12 +1,16 @@
 source "https://rubygems.org"
 
-ruby "3.2.1"
+ruby "3.2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
+
+# The Best Pagination Ruby Gem [https://github.com/ddnexus/pagy]
+gem "pagy", "~> 6.2"
+
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
