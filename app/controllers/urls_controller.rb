@@ -5,7 +5,9 @@ class UrlsController < ApplicationController
   private_constant :ToSerialize
   def index
     url = Url.new
-    links = Url.order(created_at: :desc)
+    # implement pagination using pagy
+    #
+    @pagy, links = pagy(Url.order(created_at: :desc))
 
     render locals: { url:, links: links.map(&ToSerialize) }
   end
@@ -19,7 +21,7 @@ class UrlsController < ApplicationController
       flash[:notice] = "Shortened link: #{short_url(link.short_url)}"
       redirect_to root_path
     in [:error, link]
-      links = Url.order(created_at: :desc)
+      @pagy, links = pagy(Url.order(created_at: :desc))
       render :index, locals: { url: link, links: links.map(&ToSerialize) }, status: :unprocessable_entity
     end
   end
