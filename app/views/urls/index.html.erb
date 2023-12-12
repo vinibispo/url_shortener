@@ -47,7 +47,7 @@
               <%= link_to link.short_url, link.short_url, class: "text-blue-600 visited:text-purple-600", target: "_blank", rel: "noreferrer" %>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <%= link.original %>
+              <%= truncate(link.original) %>
             </td>
             <td class="px-6 py-4 text-center whitespace-nowrap">
               <time datetime="<%= link.timestamp %>"><%= link.formatted_date %></time>
