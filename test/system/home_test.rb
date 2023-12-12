@@ -57,4 +57,28 @@ class HomeTest < ApplicationSystemTestCase
 
     assert_text url[0..10]
   end
+
+  test "visiting the home and testing the blocklist" do
+    visit root_url
+
+    url = File.readlines(Rails.root.join('lib', 'files', 'blocklist.txt')).map(&:chomp).first
+
+    fill_in "Enter your link", with: url
+
+    click_on "Shorten"
+
+    assert_text "Original url contains blocked words"
+  end
+
+  test "visiting the home and testing the blocklist with more words" do
+    visit root_url
+
+    url = File.readlines(Rails.root.join('lib', 'files', 'blocklist.txt')).map(&:chomp).second
+
+    fill_in "Enter your link", with: "https://#{url}/prohibited"
+
+    click_on "Shorten"
+
+    assert_text "Original url contains blocked words"
+  end
 end
