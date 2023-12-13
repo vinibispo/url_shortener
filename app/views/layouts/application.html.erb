@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render 'google/analytics' %>
-    <%= render 'google/adsense' %>
+    <% if Rails.env.production? %>
+      <%= render 'google/analytics' %>
+      <%= render 'google/adsense' %>
+    <% end %>
     <title>UrlCrew</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
