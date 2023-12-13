@@ -81,4 +81,25 @@ class HomeTest < ApplicationSystemTestCase
 
     assert_text "Original url contains blocked words"
   end
+
+  # I need to prepare chrome to add permissions to the clipboard
+  # test "visiting the home and copying an url" do
+  #   visit root_url
+  #
+  #   url = "https://google.com"
+  #
+  #   fill_in "Enter your link", with: url
+  #
+  #   click_on "Shorten"
+  #
+  #   click_button '📋'
+  #
+  #   link = Url.last
+  #
+  #   execute_script("document.execCommand('paste')")
+  #
+  #   # Check if the clipboard has the short url
+  #   clipboard_value = page.evaluate_script("navigator.clipboard.readText()")
+  #   assert_equal Rails.application.routes.url_helpers.short_url(link.short_url), clipboard_value
+  # end
 end

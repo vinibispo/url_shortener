@@ -1,11 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-   Add the following markup AFTER your import statements
-   Notice: this style contains only the rules for pagy-nav
-*/
 
+/* Pagy Nav Style */
 .pagy-nav.pagination {
   @apply isolate inline-flex -space-x-px rounded-md shadow-sm;
 }
@@ -32,4 +29,22 @@
 
 .page.active {
   @apply z-10 border-indigo-500 bg-indigo-50 text-indigo-600 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
+}
+
+/* Clipboard Style */
+
+.clipboard-button {
+  @apply hidden;
+}
+
+.clipboard--supported {
+  @apply flex items-center justify-center;
+}
+.clipboard--supported .clipboard-button {
+  @apply block cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded;
+}
+
+.clipboard--unsupported .clipboard-button::before {
+  content: '🚫'
+  @apply text-red-500;
 }

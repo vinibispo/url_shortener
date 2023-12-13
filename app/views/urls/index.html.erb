@@ -38,19 +38,25 @@
           <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left">Short Link</th>
           <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left">Original Link</th>
           <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center">Date</th>
+          <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center">Copy</th>
         </tr>
       </thead>
       <tbody>
         <% links.each do |link| %>
-          <tr class="<%= cycle('bg-gray-50', 'bg-white') %>">
+          <tr data-controller="clipboard" class="<%= cycle('bg-gray-50', 'bg-white') %>"  data-clipboard-supported-class="clipboard--supported" data-clipboard-unsupported-class="clipboard--unsupported">
             <td class="px-6 py-4 whitespace-nowrap">
-              <%= link_to link.short_url, link.short_url, class: "text-blue-600 visited:text-purple-600", target: "_blank", rel: "noreferrer" %>
+              <%= link_to link.short_url, link.short_url, class: "text-blue-600 visited:text-purple-600", target: "_blank", rel: "noreferrer", data: { 'clipboard-target': 'source' } %>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
               <%= truncate(link.original) %>
             </td>
             <td class="px-6 py-4 text-center whitespace-nowrap">
               <time datetime="<%= link.timestamp %>"><%= link.formatted_date %></time>
+            </td>
+            <td class="px-6 py-4 text-center whitespace-nowrap">
+              <button data-action="clipboard#copy" class="clipboard-button">
+                📋
+              </button>
             </td>
           </tr>
         <% end %>
