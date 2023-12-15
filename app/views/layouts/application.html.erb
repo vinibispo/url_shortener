@@ -13,7 +13,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen bg-white">
+    <header class="flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold">UrlCrew</h1>
+    </header>
     <%= yield %>
   </body>
 </html>
