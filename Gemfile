@@ -11,6 +11,10 @@ gem "propshaft"
 # The Best Pagination Ruby Gem [https://github.com/ddnexus/pagy]
 gem "pagy", "~> 6.2"
 
+# Use Devise for user authentication [https://github.com/heartcombo/devise]
+gem "devise"
+
+
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
