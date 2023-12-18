@@ -1,6 +1,7 @@
 require "application_system_test_case"
 
 class AuthTest < ApplicationSystemTestCase
+  include ActionMailer::TestHelper
   setup do
     Capybara.default_max_wait_time = 10
   end
@@ -78,6 +79,13 @@ class AuthTest < ApplicationSystemTestCase
   end
 
   private
+
+  def click_email_link(mail = ActionMailer::Base.deliveries.last)
+    body = mail.body.encoded
+    url = body[/http[^"]+/]
+    visit url
+  end
+
   def create_account(username, email, password)
     Account.create(username: username, email: email, password: password)
   end
