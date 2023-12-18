@@ -2,12 +2,14 @@ class UrlsController < ApplicationController
   ToSerialize = lambda do |url|
     Urls::Serializer.new(original: url.original_url, short: url.short_url, date: url.created_at)
   end
+
+  before_action :redirect_to_dashboard, only: :index
+
   private_constant :ToSerialize
   def index
     url = Url.new
-    # implement pagination using pagy
-    #
-    @pagy, links = pagy(Url.order(created_at: :desc))
+    _, urls = Url::List.call
+    @pagy, links = pagy(urls)
 
     render locals: { url:, links: links.map(&ToSerialize) }
   end
@@ -21,7 +23,8 @@ class UrlsController < ApplicationController
       flash[:notice] = "Shortened link: #{short_url(link.short_url)}"
       redirect_to root_path
     in [:error, link]
-      @pagy, links = pagy(Url.order(created_at: :desc))
+      _, urls = Url::List.call
+      @pagy, links = pagy(urls)
       render :index, locals: { url: link, links: links.map(&ToSerialize) }, status: :unprocessable_entity
     end
   end
@@ -45,4 +48,7 @@ class UrlsController < ApplicationController
     params.require(:url).permit(:original_url, :short_url)
   end
 
+  def redirect_to_dashboard
+    redirect_to account_root_path if current_account
+  end
 end

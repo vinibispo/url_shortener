@@ -9,6 +9,10 @@ class Url::FetchByShort
 
     return [:not_found, nil] unless link.present?
 
+    if link.account_id.present?
+      link.increment!(:clicks)
+    end
+
     [:ok, link]
   end
 end

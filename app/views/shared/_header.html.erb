@@ -1,0 +1,13 @@
+    <header class="flex justify-between items-center px-6 py-4 bg-white shadow-md">
+      <%= link_to root_path, class: "flex items-center" do %>
+        <h1 class="text-xl font-bold">UrlCrew</h1>
+      <% end %>
+      <nav class="flex items-center space-x-4">
+        <% if show_form_buttons? %>
+          <%= link_to "Log In", new_account_session_path, class: "px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600" %>
+          <%= link_to "Create Account", new_account_registration_path, class: "px-4 py-2 rounded-md border border-blue-500 text-blue-500 hover:bg-blue-100" %>
+        <% elsif show_logout_button? %>
+          <%= link_to "Log Out", destroy_account_session_path, data: { "turbo-method": :delete }, class: "px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600" %>
+        <% end %>
+      </nav>
+    </header>

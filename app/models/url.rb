@@ -23,7 +23,7 @@ class Url < ApplicationRecord
         )?
         \z
       }ix
-       
+
     validates :original_url, presence: true, format: { with: URL_REGEX }
-    validates :short_url, presence: true
+    validates :short_url, presence: true, uniqueness: true, length: { minimum: 3, maximum: 255 }
 end

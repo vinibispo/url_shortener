@@ -3,18 +3,25 @@
   <p class="text-gray-700 mb-8">
     UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigation.
   </p>
-  <%= form_for url, html: { class: "flex gap-1 mb-4"} do |f| %>
+  <%= form_with model: [:account, url], html: { class: "flex gap-1 mb-4 flex-col"} do |f| %>
       <%= f.text_field :original_url, placeholder: "Enter your link", class: "mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" %>
+      <%= f.text_field :short_url, placeholder: "Customize your link", class: "mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" %>
       <%= f.submit "Shorten", class: "cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold mb-4 py-2 px-4 rounded" %>
     <% end %>
 
   <% if url.errors.any? %>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-      <strong class="font-bold">Oops!</strong>
-      <span class="block sm:inline">
-        <%= url.errors.full_messages.join(', ') %>
-      </span>
-    </div>
+    <div class="mt-4 bg-red-100 border border-red-200 rounded-md p-4 shadow-md" role="alert">
+      <h2 class="text-lg font-bold text-red-500">
+        <%= I18n.t("errors.messages.not_saved",
+                   count: url.errors.count,
+                   resource: url.class.model_name.human.downcase)
+        %>
+      </h2>
+      <ul class="list-disc ml-4 mt-2 text-sm text-red-700">
+        <% url.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
   <% end %>
 
   <% if flash[:notice] %>
@@ -34,6 +41,7 @@
         <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left">Short Link</th>
         <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left">Original Link</th>
         <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center">Date</th>
+        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center">Clicks</th>
         <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center">Copy</th>
       </tr>
     </thead>
@@ -49,6 +57,8 @@
           <td class="px-6 py-4 text-center whitespace-nowrap">
             <time datetime="<%= link.timestamp %>"><%= link.formatted_date %></time>
           </td>
+          <td class="px-6 py-4 text-center whitespace-nowrap">
+            <%= link.clicks %>
           <td class="px-6 py-4 text-center whitespace-nowrap">
             <button data-action="clipboard#copy" class="clipboard-button">
               📋
