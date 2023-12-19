@@ -1,5 +1,5 @@
 class Account
-  class Account::UrlsController < Account::BaseController
+  class UrlsController < Account::BaseController
     ToSerialize = lambda do |url|
       Urls::Serializer.new(original: url.original_url, short: url.short_url, date: url.created_at, clicks: url.clicks)
     end
