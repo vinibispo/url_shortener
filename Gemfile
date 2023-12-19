@@ -80,3 +80,6 @@ end
 gem "dockerfile-rails", ">= 1.5", :group => :development
 
 gem "sidekiq"
+
+gem "sentry-ruby"
+gem "sentry-rails"
