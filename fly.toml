@@ -13,6 +13,7 @@ console_command = "/rails/bin/rails console"
   release_command = "./bin/rails db:prepare"
 
 [http_service]
+  processes = ["app"]
   internal_port = 3000
   force_https = true
   auto_stop_machines = true
@@ -42,3 +43,7 @@ console_command = "/rails/bin/rails console"
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
+
+[processes]
+  app = "./bin/rails server"
+  sidekiq = "bundle exec sidekiq"
