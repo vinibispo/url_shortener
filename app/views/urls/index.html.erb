@@ -3,62 +3,6 @@
   <p class="text-gray-700 mb-8">
     UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigation.
   </p>
-  <%= form_for url, html: { class: "flex gap-1 mb-4"} do |f| %>
-      <%= f.text_field :original_url, placeholder: "Enter your link", class: "mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" %>
-      <%= f.submit "Shorten", class: "cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold mb-4 py-2 px-4 rounded" %>
-    <% end %>
-
-  <% if url.errors.any? %>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-      <strong class="font-bold">Oops!</strong>
-      <span class="block sm:inline">
-        <%= url.errors.full_messages.join(', ') %>
-      </span>
-    </div>
-  <% end %>
-
-  <% if flash[:notice] %>
-    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-      <strong class="font-bold">Success!</strong>
-      <span class="block sm:inline">
-        <%= flash[:notice] %>
-      </span>
-    </div>
-  <% end %>
+  <%= render 'urls/form', url: url %>
 </main>
-
-<section class="flex justify-center my-4">
-  <table class="w-3/4 bg-white border border-gray-300 m-1">
-    <thead>
-      <tr>
-        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left">Short Link</th>
-        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left">Original Link</th>
-        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center">Date</th>
-        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center">Copy</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% links.each do |link| %>
-        <tr data-controller="clipboard" class="<%= cycle('bg-gray-50', 'bg-white') %>"  data-clipboard-supported-class="clipboard--supported" data-clipboard-unsupported-class="clipboard--unsupported">
-          <td class="px-6 py-4 whitespace-nowrap">
-            <%= link_to link.short_url, link.short_url, class: "text-blue-600 visited:text-purple-600", target: "_blank", rel: "noreferrer", data: { 'clipboard-target': 'source' } %>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <%= truncate(link.original) %>
-          </td>
-          <td class="px-6 py-4 text-center whitespace-nowrap">
-            <time datetime="<%= link.timestamp %>"><%= link.formatted_date %></time>
-          </td>
-          <td class="px-6 py-4 text-center whitespace-nowrap">
-            <button data-action="clipboard#copy" class="clipboard-button">
-              📋
-            </button>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</section>
-<div class="flex align-center justify-center mt-4">
-  <%== pagy_nav @pagy %>
-</div>
+<%= render 'urls/links_table', links: %>
