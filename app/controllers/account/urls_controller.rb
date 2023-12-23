@@ -18,12 +18,21 @@ class Account
 
       case Url::Generate.new(**input).call
       in [:ok, link]
-        flash[:notice] = "Shortened link: #{short_url(link.short_url)}"
-        redirect_to account_root_path
+        flash.now[:notice] = "Shortened link: #{short_url(link.short_url)}"
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: [
+              turbo_stream.replace('account_url_form', partial: 'account/urls/form', locals: { url: ::Url.new }),
+              turbo_stream.prepend('account_urls', partial: 'account/urls/link', locals: { link: ToSerialize[link] })
+            ]
+          end
+        end
       in [:error, link]
-        _, urls = Url::List.new(account_id: current_account.id).call
-        @pagy, urls = pagy(urls)
-        render :index, locals: { url: link, links: urls.map(&ToSerialize) }, status: :unprocessable_entity
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.replace('account_url_form', partial: 'account/urls/form', locals: { url: link })
+          end
+        end
       end
     end
 

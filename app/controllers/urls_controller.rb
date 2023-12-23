@@ -20,12 +20,21 @@ class UrlsController < ApplicationController
 
     case url
     in [:ok, link]
-      flash[:notice] = "Shortened link: #{short_url(link.short_url)}"
-      redirect_to root_path
+      flash.now[:notice] = "Shortened link: #{short_url(link.short_url)}"
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace('url_form', partial: 'urls/form', locals: { url: Url.new }),
+            turbo_stream.prepend('urls', partial: 'urls/link', locals: { link: ToSerialize[link] })
+          ]
+        end
+      end
     in [:error, link]
-      _, urls = Url::List.call
-      @pagy, links = pagy(urls)
-      render :index, locals: { url: link, links: links.map(&ToSerialize) }, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('url_form', partial: 'urls/form', locals: { url: link })
+        end
+      end
     end
   end
 
