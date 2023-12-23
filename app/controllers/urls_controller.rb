@@ -9,7 +9,7 @@ class UrlsController < ApplicationController
   def index
     url = Url.new
     _, urls = Url::List.call
-    @pagy, links = pagy(urls)
+    @pagy, links = pagy(urls, link_extra: 'data-turbo-action="advance"')
 
     render locals: { url:, links: links.map(&ToSerialize) }
   end
@@ -32,7 +32,7 @@ class UrlsController < ApplicationController
     in [:error, link]
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace('url_form', partial: 'urls/form', locals: { url: link })
+          render turbo_stream: turbo_stream.update('url_form', partial: 'urls/form', locals: { url: link }), status: :unprocessable_entity
         end
       end
     end

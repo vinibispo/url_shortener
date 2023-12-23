@@ -14,6 +14,7 @@ class Account
       link.save if link.errors.empty?
 
       if link.errors.any?
+        link.short_url = short_url.presence
         return [:error, link]
       end
 

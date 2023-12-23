@@ -22,7 +22,7 @@ class Account
         respond_to do |format|
           format.turbo_stream do
             render turbo_stream: [
-              turbo_stream.replace('account_url_form', partial: 'account/urls/form', locals: { url: ::Url.new }),
+              turbo_stream.update('account_url_form', partial: 'account/urls/form', locals: { url: ::Url.new }),
               turbo_stream.prepend('account_urls', partial: 'account/urls/link', locals: { link: ToSerialize[link] })
             ]
           end
@@ -30,7 +30,7 @@ class Account
       in [:error, link]
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.replace('account_url_form', partial: 'account/urls/form', locals: { url: link })
+            render turbo_stream: turbo_stream.update('account_url_form', partial: 'account/urls/form', locals: { url: link })
           end
         end
       end

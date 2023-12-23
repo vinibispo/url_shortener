@@ -1,8 +1,11 @@
 require 'application_system_test_case'
 class Account::DashboardTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
     Capybara.default_max_wait_time = 10
   end
+
   test 'private links aren\'nt public' do
     account = Account.create(username: 'test', password: '123456', email: 'test@email.com')
     visit root_path
@@ -33,7 +36,26 @@ class Account::DashboardTest < ApplicationSystemTestCase
     refute_text 'google'
   end
 
-  include Devise::Test::IntegrationHelpers
+  test 'invalid links aren\'nt created' do
+    account = Account.create(username: 'random', email: 'random@email.com', password: '123456')
+
+    sign_in account
+
+    visit account_root_path
+
+    fill_in 'Enter your link', with: ''
+
+    click_on 'Shorten'
+
+    assert_text "can't be blank"
+
+    fill_in 'Enter your link', with: 'foobar'
+
+    click_on 'Shorten'
+
+    assert_text 'Original url is invalid'
+  end
+
 
   test 'creates a link when using one of the blocklist' do
     account = Account.create(username: 'test', password: '123456', email: 'test@email.com')
