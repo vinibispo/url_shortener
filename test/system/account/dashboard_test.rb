@@ -97,6 +97,30 @@ class Account::DashboardTest < ApplicationSystemTestCase
     assert_text 'google2'
   end
 
+  test 'deletes a link' do
+    account = Account.create(username: 'test', password: '123456', email: 'test@email.com')
+
+    sign_in account
+
+    visit account_root_path
+
+    fill_in 'Enter your link', with: 'https://www.google.com'
+
+    fill_in 'Customize your link', with: 'google'
+
+    click_on 'Shorten'
+
+    assert_text 'google'
+
+    accept_confirm do
+      click_on '🗑️'
+    end
+
+    refute_text 'google'
+
+    assert_text 'Url removed'
+  end
+
   teardown do
     Capybara.default_max_wait_time = 2
   end

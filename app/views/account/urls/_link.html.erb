@@ -16,8 +16,15 @@
     </button>
   </td>
   <td class="px-6 py-4 text-center whitespace-nowrap">
-    <%= link_to edit_account_url_path(link.short), data: { turbo_frame: "modal" } do %>
+    <%= link_to edit_account_url_path(link.short) do %>
       ✏️
     <% end %>
   </td>
+
+  <td class="px-6 py-4 text-center whitespace-nowrap">
+    <%= link_to account_url_path(link.short),
+      data: { "turbo-confirm": "Are you sure?", "turbo-method": :delete } do
+    %>
+      🗑️
+    <% end %>
 </tr>

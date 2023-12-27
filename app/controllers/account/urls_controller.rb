@@ -61,6 +61,17 @@ class Account
       end
     end
 
+    def destroy
+      case Url::Remove.new(short_url: params[:short_url], account_id: current_account.id).call
+      in [:ok, link]
+        flash[:notice] = "Url removed"
+        redirect_to account_root_path
+      in [:not_found, link]
+        flash[:alert] = "Url not found"
+        redirect_to account_root_path
+      end
+    end
+
     private
 
     def url_params
