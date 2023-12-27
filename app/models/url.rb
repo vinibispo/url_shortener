@@ -26,4 +26,8 @@ class Url < ApplicationRecord
 
     validates :original_url, presence: true, format: { with: URL_REGEX }
     validates :short_url, presence: true, uniqueness: true, length: { minimum: 3, maximum: 255 }
+
+    def to_param
+        short_url
+    end
 end

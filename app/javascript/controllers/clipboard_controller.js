@@ -4,19 +4,19 @@ export default class ClipboardController extends Controller {
   static classes = ["supported", "unsupported"]
 
   connect() {
-    const lastTd = this.element.querySelector('td:last-child')
+    const copyTd = this.element.querySelector('td[data-copy="true"]')
     if ("clipboard" in navigator) {
-      lastTd.classList.add(this.supportedClass)
+      copyTd.classList.add(this.supportedClass)
     } else {
-      lastTd.classList.add(this.unsupportedClass)
+      copyTd.classList.add(this.unsupportedClass)
     }
   }
 
   copy() {
     navigator.clipboard.writeText(this.sourceTarget.href)
-    const buttons = this.element.parentElement.querySelectorAll('tr > td:last-child > button')
+    const buttons = this.element.parentElement.querySelectorAll('tr > td[data-copy="true"] > button')
     buttons.forEach(button => button.textContent = "📋")
-    const button = this.element.querySelector('td:last-child > button')
+    const button = this.element.querySelector('td[data-copy="true"]> button')
 
     button.textContent = "☑️"
   }

@@ -36,6 +36,31 @@ class Account
       end
     end
 
+    def edit
+      case Url::Fetch.new(short_url: params[:short_url], account_id: current_account.id).call
+      in [:ok, url]
+        render locals: { url: }
+      in [:not_found, url]
+        flash[:alert] = "Url not found"
+        redirect_to account_root_path
+      end
+    end
+
+    def update
+      input = { url: url_params[:original_url], old_short_url: params[:short_url], short_url: url_params[:short_url], account_id: current_account.id }
+
+      case Url::Update.new(**input).call
+      in [:ok, link]
+        flash[:notice] = "Shortened link: #{short_url(link.short_url)}"
+        redirect_to account_root_path
+      in [:error, link]
+        render :edit, locals: { url: link }
+      in [:not_found, link]
+        flash[:alert] = "Url not found"
+        redirect_to account_root_path
+      end
+    end
+
     private
 
     def url_params

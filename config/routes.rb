@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :account do
     get ":account_id/dashboard" => "urls#index", as: :dashboard
     root "urls#index"
-    post "urls" => "urls#create"
+    resources :urls, only: %i[index create edit update destroy], param: :short_url
   end
 
   root "urls#index"
