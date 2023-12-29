@@ -24,4 +24,14 @@ class UrlTest < ActiveSupport::TestCase
 
     assert url.valid?
   end
+
+  test "#valid? returns false when url is already shortened" do
+    url = Url.new(original_url: "https://google.com", short_url: SecureRandom.hex(3))
+    url.save
+
+    shortened_url = Rails.application.routes.url_helpers.short_url(url.short_url)
+    url2 = Url.new(original_url: shortened_url, short_url: SecureRandom.hex(3))
+
+    refute url2.valid?
+  end
 end

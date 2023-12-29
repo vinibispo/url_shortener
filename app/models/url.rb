@@ -27,6 +27,22 @@ class Url < ApplicationRecord
     validates :original_url, presence: true, format: { with: URL_REGEX }
     validates :short_url, presence: true, uniqueness: true, length: { minimum: 3, maximum: 255 }
 
+    validate :short_url_is_not_already_shortened, if: -> { original_url.present? && original_url.match?(URL_REGEX) }
+
+    private
+
+    def short_url_is_not_already_shortened
+      original_uri = URI.parse(original_url)
+
+      root_uri = URI.parse(Rails.application.routes.url_helpers.root_url)
+
+      return unless original_uri.origin == root_uri.origin
+
+      errors.add(:original_url, "is already shortened")
+    end
+
+    public
+
     def to_param
         short_url
     end
