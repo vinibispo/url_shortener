@@ -1,0 +1,20 @@
+---
+en:
+  page_meta:
+    descriptions:
+      account:
+        urls:
+          index: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigations.
+
+            '
+      urls:
+        index: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigation.
+
+          '
+    titles:
+      account:
+        urls:
+          index: Account
+      base: "%{value} • UrlCrew"
+      urls:
+        index: Home
