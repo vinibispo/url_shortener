@@ -83,3 +83,7 @@ gem "sentry-ruby"
 gem "sentry-rails"
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "page_meta", "~> 1.1"
+
+gem 'i18n-tasks', '~> 1.0.13', group: :development
