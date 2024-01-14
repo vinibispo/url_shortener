@@ -1,14 +1,15 @@
 class Account
   class Url::Generate
-    private attr_accessor :original_url, :short_url, :account_id
-    def initialize(url:, account_id:, short_url: nil)
+    private attr_accessor :original_url, :short_url, :account_id, :expired_at
+    def initialize(url:, account_id:, expired_at: nil, short_url: nil)
       self.original_url = url
       self.short_url = short_url
       self.account_id = account_id
+      self.expired_at = expired_at
     end
 
     def call
-      link = ::Url.new(original_url:, account_id:)
+      link = ::Url.new(original_url:, account_id:, expired_at:)
       link.short_url = short_url.presence || generate_short_url
 
       link.save if link.errors.empty?

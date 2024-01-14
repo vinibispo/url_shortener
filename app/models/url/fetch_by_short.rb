@@ -9,6 +9,8 @@ class Url::FetchByShort
 
     return [:not_found, nil] unless link.present?
 
+    return [:expired, link] if link.expired_at.present? && link.expired_at < Time.zone.now
+
     if link.account_id.present?
       link.increment!(:clicks)
     end

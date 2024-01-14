@@ -121,6 +121,57 @@ class Account::DashboardTest < ApplicationSystemTestCase
     assert_text 'Url removed'
   end
 
+  test 'creates a link with expiration date' do
+    account = Account.create(username: 'test', password: '123456', email: 'test@email.com')
+
+    sign_in account
+
+    visit account_root_path
+
+    fill_in 'Enter your link', with: 'https://www.google.com'
+
+    fill_in 'Customize your link', with: 'google'
+
+    check 'Expires?'
+
+    time = DateTime.now + 1.day
+
+
+    fill_in 'Expiration Date', with: time
+
+    click_on 'Shorten'
+
+    assert_text 'google'
+
+    assert_text 'No, ' + time.strftime("%F")
+  end
+
+  test 'creates a link with expiration date in the past' do
+    
+    account = Account.create(username: 'test', password: '123456', email: 'test@email.com')
+
+    sign_in account
+
+    visit account_root_path
+
+    fill_in 'Enter your link', with: 'https://www.google.com'
+
+    fill_in 'Customize your link', with: 'google'
+
+    check 'Expires?'
+
+    time = DateTime.now - 1.month
+
+
+    fill_in 'Expiration Date', with: time
+
+    click_on 'Shorten'
+
+    assert_text 'google'
+
+    assert_text 'Yes, ' + time.strftime("%F")
+  end
+
   teardown do
     Capybara.default_max_wait_time = 2
   end

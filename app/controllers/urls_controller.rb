@@ -48,6 +48,9 @@ class UrlsController < ApplicationController
     in [:not_found, message]
         flash[:notice] = message
         redirect_to "/404"
+    in [:expired, link]
+      flash[:notice] = "This link has expired"
+      redirect_to "/404"
     end
   end
 

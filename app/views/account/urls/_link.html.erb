@@ -8,6 +8,12 @@
   <td class="px-6 py-4 text-center whitespace-nowrap">
     <time datetime="<%= link.timestamp %>"><%= link.formatted_date %></time>
   </td>
+
+  <td class="px-6 py-4 text-center whitespace-nowrap">
+    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+      <%= link.expired %>
+    </span>
+  </td>
   <td class="px-6 py-4 text-center whitespace-nowrap">
     <%= link.clicks %>
   <td class="px-6 py-4 text-center whitespace-nowrap" data-copy="true">

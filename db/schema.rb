@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_15_235221) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_10_014420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_235221) do
     t.datetime "updated_at", null: false
     t.integer "clicks", default: 0, null: false
     t.integer "account_id"
+    t.datetime "expired_at"
     t.index ["account_id"], name: "index_urls_on_account_id"
   end
 

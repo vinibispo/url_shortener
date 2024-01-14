@@ -1,7 +1,7 @@
 class Account
   class UrlsController < BaseController
     ToSerialize = lambda do |url|
-      Urls::Serializer.new(original: url.original_url, short: url.short_url, date: url.created_at, clicks: url.clicks)
+      Urls::Serializer.new(original: url.original_url, short: url.short_url, date: url.created_at, clicks: url.clicks, expired_at: url.expired_at)
     end
 
     private_constant :ToSerialize
@@ -14,7 +14,12 @@ class Account
     end
 
     def create
-      input = { url: url_params[:original_url], short_url: url_params[:short_url], account_id: current_account.id }
+      input = { 
+        url: url_params[:original_url],
+        short_url: url_params[:short_url],
+        expired_at: url_params[:expired_at],
+        account_id: current_account.id
+      }
 
       case Url::Generate.new(**input).call
       in [:ok, link]
@@ -75,7 +80,7 @@ class Account
     private
 
     def url_params
-      params.require(:url).permit(:original_url, :short_url)
+      params.require(:url).permit(:original_url, :short_url, :expired_at)
     end
   end
 end
