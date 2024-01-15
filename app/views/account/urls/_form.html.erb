@@ -1,13 +1,12 @@
-
 <%= form_with model: [:account, url], html: { class: "flex gap-1 mb-4 flex-col", "data-controller": "url-form"} do |f| %>
-    <%= f.text_field :original_url, placeholder: "Enter your link", class: "mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" %>
-    <%= f.text_field :short_url, placeholder: "Customize your link", class: "mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" %>
+    <%= f.text_field :original_url, placeholder: true, class: "mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" %>
+    <%= f.text_field :short_url, placeholder: true, class: "mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" %>
     <div class="mb-4 flex items-center">
-      <input type="checkbox" name="expired" id="expired" class="mr-2 leading-tight" data-url-form-target="checkbox" data-action="change->url-form#toggleDatetimeDiv" >
+      <input type="checkbox" checked="<%= url.expired_at.present? %>" name="expired" id="expired" class="mr-2 leading-tight" data-url-form-target="checkbox" data-action="change->url-form#toggleDatetimeDiv" >
       <label class="block text-gray-700 text-md" for="expired">Expires?</label>
     </div>
     <div class="mb-4 hidden" data-url-form-target="datetimeGroup">
-      <%= f.label :expired_at, 'Expiration Date', class: 'block text-gray-700 text-sm font-bold mb-2' %>
+      <%= f.label :expired_at, class: 'block text-gray-700 text-sm font-bold mb-2' %>
       <%= f.datetime_field :expired_at, class: 'appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline' %>
     </div>
     <%= f.submit "Shorten", class: "cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold mb-4 py-2 px-4 rounded" %>

@@ -1,7 +1,13 @@
 class Account
   class UrlsController < BaseController
     ToSerialize = lambda do |url|
-      Urls::Serializer.new(original: url.original_url, short: url.short_url, date: url.created_at, clicks: url.clicks, expired_at: url.expired_at)
+      Urls::Serializer.new(
+        original: url.original_url,
+        short: url.short_url,
+        date: url.created_at,
+        clicks: url.clicks,
+        expired_at: url.expired_at
+      )
     end
 
     private_constant :ToSerialize
@@ -14,7 +20,7 @@ class Account
     end
 
     def create
-      input = { 
+      input = {
         url: url_params[:original_url],
         short_url: url_params[:short_url],
         expired_at: url_params[:expired_at],
@@ -35,7 +41,9 @@ class Account
       in [:error, link]
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.update('account_url_form', partial: 'account/urls/form', locals: { url: link })
+            render turbo_stream: turbo_stream.update(
+              'account_url_form', partial: 'account/urls/form', locals: { url: link }
+            )
           end
         end
       end
@@ -52,7 +60,13 @@ class Account
     end
 
     def update
-      input = { url: url_params[:original_url], old_short_url: params[:short_url], short_url: url_params[:short_url], account_id: current_account.id }
+      input = {
+        url: url_params[:original_url],
+        old_short_url: params[:short_url],
+        short_url: url_params[:short_url],
+        account_id: current_account.id,
+        expired_at: url_params[:expired_at]
+      }
 
       case Url::Update.new(**input).call
       in [:ok, link]

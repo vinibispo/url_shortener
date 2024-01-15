@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      url: Url
+    attributes:
+      url:
+        expired_at: Expiration Date
