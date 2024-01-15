@@ -7,6 +7,23 @@ en:
           index: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigations.
 
             '
+      accounts:
+        registrations:
+          new: 'Create your account to use all of UrlCrew''s features.
+
+            '
+      devise:
+        passwords:
+          edit: 'Reset your password to regain access to your account.
+
+            '
+          new: 'Forgot your password? Reset it to regain access to your account.
+
+            '
+        sessions:
+          new: 'Log in to your account to use all of UrlCrew''s features.
+
+            '
       urls:
         index: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigation.
 
@@ -15,6 +32,17 @@ en:
       account:
         urls:
           index: Account
+          edit: Editing Url
+      accounts:
+        registrations:
+          new: Sign Up
       base: "%{value} • UrlCrew"
+
+      devise:
+        passwords:
+          edit: Reset Password
+          new: Forgot Password
+        sessions:
+          new: Log In
       urls:
         index: Home
