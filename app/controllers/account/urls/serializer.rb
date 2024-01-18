@@ -8,11 +8,11 @@ Account::Urls::Serializer = Data.define(:short, :original, :date, :clicks, :expi
   end
 
   def expired
-    return 'No' unless expired_at
+    return I18n.t('flash.url.false') unless expired_at
 
-    return "No, #{I18n.l(expired_at, format: '%F')}" if expired_at > Time.zone.now
+    return "#{I18n.t('flash.url.false')}, #{I18n.l(expired_at, format: '%F')}" if expired_at > Time.zone.now
 
-    "Yes, #{I18n.l(expired_at, format: '%F')}"
+    "#{I18n.t('flash.url.true')}, #{I18n.l(expired_at, format: '%F')}"
   end
 
   def short_url
