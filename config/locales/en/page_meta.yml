@@ -1,48 +1,52 @@
 ---
 en:
   page_meta:
-    descriptions:
-      account:
-        urls:
-          index: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigations.
+    title_base: "%{value} • UrlCrew"
+    accounts:
+      registrations:
+        new:
+          description: 'Create your account to use all of UrlCrew''s features.
 
             '
-      accounts:
-        registrations:
-          new: 'Create your account to use all of UrlCrew''s features.
+          title: Sign Up
+          keywords: 'sign, up, signup, sign-up, register, registration, registering, registering, create, creating, creating, urlcrew'
+    devise:
+      sessions:
+        new:
+          description: 'Log in to your account to use all of UrlCrew''s features.
 
             '
-      devise:
-        passwords:
-          edit: 'Reset your password to regain access to your account.
+          title: Log In
+          keywords: 'log, in, login, log-in, signin, sign-in, sign, urlcrew'
+      passwords:
+        edit:
+          description: 'Reset your password to regain access to your account.
 
             '
-          new: 'Forgot your password? Reset it to regain access to your account.
+          title: Reset Password
+        new:
+          description: 'Forgot your password? Reset it to regain access to your account.
 
             '
-        sessions:
-          new: 'Log in to your account to use all of UrlCrew''s features.
-
-            '
+          title: Forgot Password
+          keywords: 'forgot, password, forgot-password, forgotpassword, reset, resetting, reseting, urlcrew'
+    account:
       urls:
-        index: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigation.
+        index:
+          description: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigations.
+
+            '
+          title: Account
+          keywords: 'account, accounts, url, urls, shortener, shortening, short, link, links, shorten, shortenings, cut, cuts, cutting, tiny, tinyurl, tinyurls, tinyurling, tinyurlings, tinyurler, tinyurlers, urlcrew'
+        edit:
+          description: 'Edit your UrlCrew account.
+
+            '
+          title: Editing Url
+    urls:
+      index:
+        description: 'UrlCrew optimizes online experiences with its user-friendly URL shortening service, creating concise links for efficient navigation.
 
           '
-    titles:
-      account:
-        urls:
-          index: Account
-          edit: Editing Url
-      accounts:
-        registrations:
-          new: Sign Up
-      base: "%{value} • UrlCrew"
-
-      devise:
-        passwords:
-          edit: Reset Password
-          new: Forgot Password
-        sessions:
-          new: Log In
-      urls:
-        index: Home
+        title: Home
+        keywords: 'url, shortener, shortening, short, link, links, shorten, shortenings, cut, cuts, cutting, tiny, tinyurl, tinyurls, tinyurling, tinyurlings, tinyurler, tinyurlers, urlcrew'

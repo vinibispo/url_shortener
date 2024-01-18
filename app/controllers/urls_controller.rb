@@ -10,6 +10,7 @@ class UrlsController < ApplicationController
     url = Url.new
     _, urls = Url::List.call
     @pagy, links = pagy(urls, link_extra: 'data-turbo-action="advance"')
+    page_meta.tag :robots, "index, follow"
 
     render locals: { url:, links: links.map(&ToSerialize) }
   end
@@ -41,6 +42,7 @@ class UrlsController < ApplicationController
   def redirect
     input = { short_url: params[:short_url] }
     url = Url::FetchByShort.new(**input).call
+    page_meta.tag :robots, "noindex, nofollow"
 
     case url
     in [:ok, link]
