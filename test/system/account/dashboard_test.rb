@@ -147,7 +147,7 @@ class Account::DashboardTest < ApplicationSystemTestCase
   end
 
   test 'creates a link with expiration date in the past' do
-    
+
     account = Account.create(username: 'test', password: '123456', email: 'test@email.com')
 
     sign_in account

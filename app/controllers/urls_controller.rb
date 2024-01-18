@@ -20,7 +20,7 @@ class UrlsController < ApplicationController
 
     case url
     in [:ok, link]
-      flash.now[:notice] = "Shortened link: #{short_url(link.short_url)}"
+      flash.now[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url))
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [
@@ -49,7 +49,7 @@ class UrlsController < ApplicationController
         flash[:notice] = message
         redirect_to "/404"
     in [:expired, link]
-      flash[:notice] = "This link has expired"
+      flash[:notice] = I18n.t('flash.url.expired')
       redirect_to "/404"
     end
   end

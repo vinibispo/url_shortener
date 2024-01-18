@@ -1,24 +1,23 @@
 ---
-links_table: &links_table
-  copy: Copy
-  date: Date
-  original: Original Link
-  short: Short Link
 en:
+  account:
+    urls:
+      form:
+        success: Success!
+      links_table:
+        clicks: Clicks
+        copy: Copy
+        date: Date
+        destroy: Delete
+        edit: Edit
+        expired: Expired
+        original: Original Link
+        short: Short Link
   helpers:
     placeholder:
       url:
         original_url: Enter your link
         short_url: Customize your link
-  account:
-    urls:
-      links_table:
-        <<: *links_table
-        clicks: Clicks
-        edit: Edit
-        destroy: Delete
-        expired: Expired
-
   urls:
     form:
       oops: Oops!
@@ -26,4 +25,7 @@ en:
     index:
       short_description: Shorten Your Loooong Links :)
     links_table:
-      <<: *links_table
+      copy: Copy
+      date: Date
+      original: Original Link
+      short: Short Link

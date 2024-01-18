@@ -17,6 +17,8 @@ data:
   read:
     - config/locales/en/views.yml
     - config/locales/en/devise.yml
+    - config/locales/en/activerecord.yml
+    - config/locales/en/flash.yml
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules

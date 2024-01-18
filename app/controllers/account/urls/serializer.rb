@@ -1,18 +1,18 @@
 Account::Urls::Serializer = Data.define(:short, :original, :date, :clicks, :expired_at) do
   def formatted_date
-    date.strftime("%b %e, %Y")
+    I18n.l(date, format: '%b %e, %Y')
   end
 
   def timestamp
-    date.strftime("%F")
+    I18n.l(date, format: '%F')
   end
 
   def expired
     return 'No' unless expired_at
 
-    return "No, #{expired_at.strftime("%F")}" if expired_at > Time.zone.now
+    return "No, #{I18n.l(expired_at, format: '%F')}" if expired_at > Time.zone.now
 
-    "Yes, #{expired_at.strftime('%F')}"
+    "Yes, #{I18n.l(expired_at, format: '%F')}"
   end
 
   def short_url
