@@ -29,7 +29,7 @@
 
   <td class="px-6 py-4 text-center whitespace-nowrap">
     <%= link_to account_url_path(link.short),
-      data: { "turbo-confirm": "Are you sure?", "turbo-method": :delete } do
+      data: { "turbo-confirm": t('flash.url.confirm'), "turbo-method": :delete } do
     %>
       🗑️
     <% end %>
