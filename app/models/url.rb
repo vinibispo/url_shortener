@@ -38,7 +38,7 @@ class Url < ApplicationRecord
 
       return unless original_uri.origin == root_uri.origin
 
-      errors.add(:original_url, "is already shortened")
+      errors.add(:original_url, :already_shortened)
     end
 
     public

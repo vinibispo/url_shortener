@@ -4,6 +4,8 @@ en:
     url:
       confirm: Are you sure?
       expired: Your link has expired
+      'false': 'No'
       not_found: Link not found
       removed: Url removed
       shortened: 'Shortened link: %{url}'
+      'true': 'Yes'

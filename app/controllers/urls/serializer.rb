@@ -1,10 +1,10 @@
 Urls::Serializer = Data.define(:short, :original, :date) do
   def formatted_date
-    date.strftime("%b %e, %Y")
+    I18n.l(date, format: '%b %e, %Y')
   end
 
   def timestamp
-    date.strftime("%F")
+    I18n.l(date, format: '%F')
   end
 
   def model_name

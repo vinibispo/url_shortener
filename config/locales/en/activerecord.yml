@@ -5,5 +5,9 @@ en:
       url:
         expired: Expires?
         expired_at: Expiration Date
+    errors:
+      models:
+        url:
+          already_shortened: is already shortened
     models:
       url: Url
