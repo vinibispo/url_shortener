@@ -4,7 +4,7 @@
     <div class="mb-4 flex items-center">
 
       <%= check_box :expired, url.expired_at.present? ? 1 : 0, id: :expired, name: :expired, class: 'mr-2 leading-tight', data: { action: 'change->url-form#toggleDatetimeDiv', 'url-form-target': 'checkbox' } %>
-      <%= label :expired, 'Expires?', id: :expired, for: :expired, class: 'block text-gray-700 text-md' %>
+      <%= label :expired, t('activerecord.attributes.url.expired'), id: :expired, for: :expired, class: 'block text-gray-700 text-md' %>
     </div>
     <div class="mb-4 hidden" data-url-form-target="datetimeGroup">
       <%= f.label :expired_at, class: 'block text-gray-700 text-sm font-bold mb-2' %>

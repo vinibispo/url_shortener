@@ -2,6 +2,8 @@
 en:
   account:
     urls:
+      edit:
+        editing: Editing %{url}...
       form:
         success: Success!
       links_table:
@@ -18,6 +20,9 @@ en:
       url:
         original_url: Enter your link
         short_url: Customize your link
+  shared:
+    header:
+      register: Create account
   urls:
     form:
       oops: Oops!

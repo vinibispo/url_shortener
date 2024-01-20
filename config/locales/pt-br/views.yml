@@ -1,0 +1,36 @@
+---
+pt-br:
+  account:
+    urls:
+      edit:
+        editing: "Editando %{url}..."
+      form:
+        success: Sucesso!
+      links_table:
+        clicks: Cliques
+        copy: Copiar
+        date: Data
+        destroy: Excluir
+        edit: Editar
+        expired: Expirado
+        original: Link Original
+        short: Link Curto
+  helpers:
+    placeholder:
+      url:
+        original_url: Insira seu link
+        short_url: Personalize seu link
+  shared:
+    header:
+      register: Criar conta
+  urls:
+    form:
+      oops: Ops!
+      success: Sucesso!
+    index:
+      short_description: Encurte Seus Links Longos :)
+    links_table:
+      copy: Copiar
+      date: Data
+      original: Link Original
+      short: Link Curto

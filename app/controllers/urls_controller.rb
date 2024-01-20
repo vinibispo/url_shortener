@@ -21,7 +21,7 @@ class UrlsController < ApplicationController
 
     case url
     in [:ok, link]
-      flash.now[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url))
+      flash.now[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url, locale: nil))
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [

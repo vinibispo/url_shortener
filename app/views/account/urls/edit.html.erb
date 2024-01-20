@@ -1,6 +1,6 @@
 
 <main class="flex flex-col mt-8 items-center">
-  <h2 class="text-3xl font-bold mb-4">Editing <%= url.short_url %>...</h2>
+  <h2 class="text-3xl font-bold mb-4"><%= t('.editing', url: url.short_url) %></h2>
 
   <div id="account_url_form">
     <%= render "account/urls/form", url: url %>

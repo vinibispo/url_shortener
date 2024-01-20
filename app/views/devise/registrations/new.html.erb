@@ -1,5 +1,5 @@
 <div class="w-full max-w-xs mx-auto mt-8 p-6 bg-white shadow-md rounded">
-  <h2 class="text-2xl font-bold text-center mb-4">Sign up</h2>
+  <h2 class="text-2xl font-bold text-center mb-4"><%= t('.sign_up') %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "flex flex-col space-y-4" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -17,7 +17,7 @@
     <div class="field">
       <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
       <% if @minimum_password_length %>
-      <em class="text-xs text-gray-500">(<%= @minimum_password_length %> characters minimum)</em>
+      <em class="text-xs text-gray-500"> <%= t('shared.minimum_password_length', scope: 'devise', count: @minimum_password_length) %></em>
       <% end %>
       <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
     </div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up", class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <%= f.submit t('.sign_up'), class: "py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>
   <% end %>
 

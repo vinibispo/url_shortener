@@ -1,0 +1,13 @@
+---
+pt-br:
+  activerecord:
+    attributes:
+      url:
+        expired: Expira?
+        expired_at: Data de Expiração
+    errors:
+      models:
+        url:
+          already_shortened: já está encurtado
+    models:
+      url: URL
