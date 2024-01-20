@@ -29,7 +29,7 @@ class Account
 
       case Url::Generate.new(**input).call
       in [:ok, link]
-        flash.now[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url))
+        flash.now[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url, locale: nil))
         respond_to do |format|
           format.turbo_stream do
             render turbo_stream: [
@@ -70,7 +70,7 @@ class Account
 
       case Url::Update.new(**input).call
       in [:ok, link]
-        flash[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url))
+        flash[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url, locale: nil))
         redirect_to account_root_path
       in [:error, link]
         render :edit, locals: { url: link }

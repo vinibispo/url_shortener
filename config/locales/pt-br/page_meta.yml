@@ -1,0 +1,38 @@
+---
+pt-br:
+  page_meta:
+    title_base: "%{value} • UrlCrew"
+    accounts:
+      registrations:
+        new:
+          description: 'Crie sua conta para usar todos os recursos do UrlCrew.'
+          title: Cadastre-se
+          keywords: 'cadastro, cadastrar, criar, criação, conta, contas, urlcrew'
+    devise:
+      sessions:
+        new:
+          description: 'Faça login na sua conta para usar todos os recursos do UrlCrew.'
+          title: Entrar
+          keywords: 'login, entrar, sessão, logar, urlcrew'
+      passwords:
+        edit:
+          description: 'Redefina sua senha para recuperar o acesso à sua conta.'
+          title: Redefinir Senha
+        new:
+          description: 'Esqueceu sua senha? Redefina-a para recuperar o acesso à sua conta.'
+          title: Esqueceu a Senha
+          keywords: 'esqueci, senha, redefinir, resetar, urlcrew'
+    account:
+      urls:
+        index:
+          description: 'O UrlCrew otimiza as experiências online com seu serviço de encurtamento de URL amigável, criando links concisos para navegações eficientes.'
+          title: Conta
+          keywords: 'conta, contas, url, urls, encurtador, encurtamento, encurtar, link, links, curto, tiny, tinyurl, urlcrew'
+        edit:
+          description: 'Edite sua conta UrlCrew.'
+          title: Editando Url
+    urls:
+      index:
+        description: 'O UrlCrew otimiza as experiências online com seu serviço de encurtamento de URL amigável, criando links concisos para navegações eficientes.'
+        title: Início
+        keywords: 'url, encurtador, encurtamento, encurtar, link, links, curto, tiny, tinyurl, urlcrew'

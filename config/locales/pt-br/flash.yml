@@ -1,0 +1,11 @@
+---
+pt-br:
+  flash:
+    url:
+      confirm: Tem certeza?
+      expired: Seu link expirou
+      'false': 'Não'
+      not_found: Link não encontrado
+      removed: URL removido
+      shortened: 'Link encurtado: %{url}'
+      'true': 'Sim'

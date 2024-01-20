@@ -4,8 +4,6 @@ export default class UrlFormController extends Controller {
 
   connect() {
     this.toggleDatetimeDiv()
-    console.log(this.element.childNodes)
-    console.log(this.datetimeGroupTarget.childNodes)
   }
 
   toggleDatetimeDiv() {

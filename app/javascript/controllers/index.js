@@ -6,6 +6,8 @@ import { application } from "./application"
 
 import ClipboardController from "./clipboard_controller"
 import UrlFormController from "./account/url_form_controller"
+import LanguageController from "./language_controller"
 
 application.register("clipboard", ClipboardController)
 application.register("url-form", UrlFormController)
+application.register("language", LanguageController)

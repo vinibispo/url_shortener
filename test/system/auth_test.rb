@@ -32,7 +32,7 @@ class AuthTest < ApplicationSystemTestCase
 
     assert_selector "input[type=submit][value='Shorten']"
 
-    assert_equal current_path, account_root_path
+    assert_equal current_path, account_root_path(locale: I18n.locale)
   end
 
   test "filling in the sign up form with invalid credentials doesn't redirect to account_root" do
@@ -58,7 +58,7 @@ class AuthTest < ApplicationSystemTestCase
 
     assert_selector "input[type=submit][value='Shorten']"
 
-    assert_equal current_path, account_root_path
+    assert_equal current_path, account_root_path(locale: I18n.locale)
   end
 
   test "filling in the sign in form with invalid credentials doesn't redirect to account_root" do

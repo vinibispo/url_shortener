@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
 
   before_action :set_meta
+  before_action :set_locale
 
   def set_meta
     page_meta.tag :author, 'Vinícius Bispo'
@@ -23,5 +24,13 @@ class ApplicationController < ActionController::Base
     page_meta.link :icon, type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png'
 
     page_meta.link :manifest, href: '/site.webmanifest'
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 end
