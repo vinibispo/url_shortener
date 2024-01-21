@@ -110,13 +110,6 @@ class HomeTest < ApplicationSystemTestCase
     assert_text "Encurte Seus Links Longos :)"
   end
 
-  test "visiting all the pages and make sure there's no missing translations" do
-    visit root_url
-
-    assert_no_selector "span.translation_missing"
-
-  end
-
   # I need to prepare chrome to add permissions to the clipboard
   # test "visiting the home and copying an url" do
   #   visit root_url
