@@ -7,6 +7,12 @@ class SettingsController < ApplicationController
       I18n.locale = locale
     end
 
-    redirect_to root_path
+    redirect_to url_for(controller: language_params[:controller], action: language_params[:action], locale:)
+  end
+
+  private
+
+  def language_params
+    params.require(:language).permit(:controller, :action)
   end
 end

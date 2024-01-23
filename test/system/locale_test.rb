@@ -40,6 +40,16 @@ class LocaleTest < ApplicationSystemTestCase
     end
   end
 
+  test "visiting the login url when changing the locale" do
+    visit new_account_session_url
+
+    select "Português (Brasil)", from: "locale"
+
+    sleep 1
+
+    assert_equal current_path, new_account_session_path(locale: 'pt-br')
+  end
+
   def i18n_helper(string, locale: I18n.locale)
     I18n.t(string, locale:)
   end

@@ -1,17 +1,20 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class LanguageController extends Controller {
-  connect() {
-    console.log("connect")
-  }
+  static targets = ["action", "controller"]
 
   changeLocale(e) {
-    const currentValue = this.element.value
-    console.log("change")
-    // Add authenticity token
+    const currentValue = this.element.firstElementChild.value
+    const controller = this.controllerTarget.value
+    const action = this.actionTarget.value
+
     const authenticity_token = document.querySelector("meta[name='csrf-token']").content
     const body = JSON.stringify({
-      authenticity_token: authenticity_token
+      authenticity_token: authenticity_token,
+      language: {
+        controller: controller,
+        action: action,
+      }
     })
     fetch(
       this.urlForLocaleChange(e.target.value),
