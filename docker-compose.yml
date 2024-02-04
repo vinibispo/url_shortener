@@ -37,9 +37,9 @@ services:
   redis-db:
     image: redis
 
-  sidekiq:
+  solid_queue:
     build: .
-    command: bundle exec sidekiq
+    command: bundle exec solid_queue:start
     environment:
       - RAILS_MASTER_KEY=$RAILS_MASTER_KEY
       - REDIS_URL=redis://redis-db:6379
