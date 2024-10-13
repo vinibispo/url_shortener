@@ -3,9 +3,10 @@
     <thead>
       <tr>
         <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left"><%= t('.short') %></th>
-        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left"><%= t('.original') %></th>
-        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center"><%= t('.date') %></th>
-        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center"><%= t('.copy') %></th>
+        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left hidden md:table-cell"><%= t('.original') %></th>
+        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center hidden md:table-cell"><%= t('.date') %></th>
+        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-center hidden md:table-cell"><%= t('.copy') %></th>
+        <th class="px-6 py-3 bg-gray-100 border-b border-gray-300 text-left md:hidden"></th>
       </tr>
     </thead>
     <tbody id="urls">
@@ -15,6 +16,6 @@
     </tbody>
   </table>
 </section>
-<div class="flex align-center justify-center mt-4">
+<div class="flex align-center justify-center mt-4 mb-4">
   <%== pagy_nav @pagy %>
 </div>
