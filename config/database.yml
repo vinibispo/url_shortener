@@ -87,9 +87,10 @@ test:
 production:
   primary: &primary_production
     <<: *default
+    host: urlcrew-db
     database: urlcrew_production
-    username: urlcrew
-    password: <%= ENV["URLCREW_DATABASE_PASSWORD"] %>
+    username: postgres
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: urlcrew_production_cache
