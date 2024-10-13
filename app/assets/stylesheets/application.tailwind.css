@@ -38,7 +38,7 @@
 }
 
 .clipboard--supported {
-  @apply flex items-center justify-center;
+  @apply hidden md:flex items-center justify-center;
 }
 .clipboard--supported .clipboard-button {
   @apply block cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded;

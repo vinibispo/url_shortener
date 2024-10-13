@@ -63,3 +63,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'pagy', '~> 6.2'
+gem "devise"
+gem 'page_meta', '~> 1.1'
+
+gem 'i18n-tasks', '~> 1.0.13', group: :development

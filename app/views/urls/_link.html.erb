@@ -2,15 +2,21 @@
   <td class="px-6 py-4 whitespace-nowrap">
     <%= link_to link.short_url, link.short_url, class: "text-blue-600 visited:text-purple-600", target: "_blank", rel: "noreferrer", data: { 'clipboard-target': 'source' } %>
   </td>
-  <td class="px-6 py-4 whitespace-nowrap">
+  <td class="px-6 py-4 whitespace-nowrap hidden md:table-cell">
     <%= truncate(link.original) %>
   </td>
-  <td class="px-6 py-4 text-center whitespace-nowrap">
+  <td class="px-6 py-4 text-center whitespace-nowrap hidden md:table-cell">
     <time datetime="<%= link.timestamp %>"><%= link.formatted_date %></time>
   </td>
-  <td class="px-6 py-4 text-center whitespace-nowrap" data-copy="true">
+  <td class="px-6 py-4 text-center whitespace-nowrap hidden md:table-cell" data-copy="true">
     <button data-action="clipboard#copy" class="clipboard-button">
       📋
     </button>
+  </td>
+
+  <td class="px-6 py-4 text-center whitespace-nowrap md:hidden">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
   </td>
 </tr>
