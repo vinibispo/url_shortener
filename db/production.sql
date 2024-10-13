@@ -1,0 +1,4 @@
+CREATE DATABASE urlcrew_production;
+CREATE DATABASE urlcrew_production_cache;
+CREATE DATABASE urlcrew_production_queue;
+CREATE DATABASE urlcrew_production_cable;
