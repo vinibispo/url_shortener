@@ -7,14 +7,14 @@ class Url::FetchByShort
   def call
     link = Url.find_by(short_url:)
 
-    return [:not_found, nil] unless link.present?
+    return [ :not_found, nil ] unless link.present?
 
-    return [:expired, link] if link.expired_at.present? && link.expired_at < Time.zone.now
+    return [ :expired, link ] if link.expired_at.present? && link.expired_at < Time.zone.now
 
     if link.account_id.present?
       link.increment!(:clicks)
     end
 
-    [:ok, link]
+    [ :ok, link ]
   end
 end

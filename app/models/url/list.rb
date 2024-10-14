@@ -3,7 +3,7 @@ module Url::List
   def call
     urls = fetch_urls
 
-    [:ok, urls]
+    [ :ok, urls ]
   end
 
   private

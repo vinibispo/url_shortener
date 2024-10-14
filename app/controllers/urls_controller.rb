@@ -21,19 +21,19 @@ class UrlsController < ApplicationController
 
     case url
     in [:ok, link]
-      flash.now[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url, locale: nil))
+      flash.now[:notice] = I18n.t("flash.url.shortened", url: short_url(link.short_url, locale: nil))
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.replace('url_form', partial: 'urls/form', locals: { url: Url.new }),
-            turbo_stream.prepend('urls', partial: 'urls/link', locals: { link: ToSerialize[link] })
+            turbo_stream.replace("url_form", partial: "urls/form", locals: { url: Url.new }),
+            turbo_stream.prepend("urls", partial: "urls/link", locals: { link: ToSerialize[link] })
           ]
         end
       end
     in [:error, link]
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.update('url_form', partial: 'urls/form', locals: { url: link }), status: :unprocessable_entity
+          render turbo_stream: turbo_stream.update("url_form", partial: "urls/form", locals: { url: link }), status: :unprocessable_entity
         end
       end
     end
@@ -51,7 +51,7 @@ class UrlsController < ApplicationController
         flash[:notice] = message
         redirect_to "/404"
     in [:expired, link]
-      flash[:notice] = I18n.t('flash.url.expired')
+      flash[:notice] = I18n.t("flash.url.expired")
       redirect_to "/404"
     end
   end

@@ -29,12 +29,12 @@ class Account
 
       case Url::Generate.new(**input).call
       in [:ok, link]
-        flash.now[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url, locale: nil))
+        flash.now[:notice] = I18n.t("flash.url.shortened", url: short_url(link.short_url, locale: nil))
         respond_to do |format|
           format.turbo_stream do
             render turbo_stream: [
-              turbo_stream.update('account_url_form', partial: 'account/urls/form', locals: { url: ::Url.new }),
-              turbo_stream.prepend('account_urls', partial: 'account/urls/link', locals: { link: ToSerialize[link] })
+              turbo_stream.update("account_url_form", partial: "account/urls/form", locals: { url: ::Url.new }),
+              turbo_stream.prepend("account_urls", partial: "account/urls/link", locals: { link: ToSerialize[link] })
             ]
           end
         end
@@ -42,7 +42,7 @@ class Account
         respond_to do |format|
           format.turbo_stream do
             render turbo_stream: turbo_stream.update(
-              'account_url_form', partial: 'account/urls/form', locals: { url: link }
+              "account_url_form", partial: "account/urls/form", locals: { url: link }
             )
           end
         end
@@ -54,7 +54,7 @@ class Account
       in [:ok, url]
         render locals: { url: }
       in [:not_found, url]
-        flash[:alert] = I18n.t('flash.url.not_found')
+        flash[:alert] = I18n.t("flash.url.not_found")
         redirect_to account_root_path
       end
     end
@@ -70,12 +70,12 @@ class Account
 
       case Url::Update.new(**input).call
       in [:ok, link]
-        flash[:notice] = I18n.t('flash.url.shortened', url: short_url(link.short_url, locale: nil))
+        flash[:notice] = I18n.t("flash.url.shortened", url: short_url(link.short_url, locale: nil))
         redirect_to account_root_path
       in [:error, link]
         render :edit, locals: { url: link }
       in [:not_found, link]
-        flash[:alert] = I18n.t('flash.url.not_found')
+        flash[:alert] = I18n.t("flash.url.not_found")
         redirect_to account_root_path
       end
     end
@@ -83,10 +83,10 @@ class Account
     def destroy
       case Url::Remove.new(short_url: params[:short_url], account_id: current_account.id).call
       in [:ok, link]
-        flash[:notice] = I18n.t('flash.url.removed')
+        flash[:notice] = I18n.t("flash.url.removed")
         redirect_to account_root_path
       in [:not_found, link]
-        flash[:alert] = I18n.t('flash.url.not_found')
+        flash[:alert] = I18n.t("flash.url.not_found")
         redirect_to account_root_path
       end
     end

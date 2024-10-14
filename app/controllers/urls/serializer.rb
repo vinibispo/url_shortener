@@ -1,11 +1,11 @@
 Urls::Serializer = Data.define(:short, :original, :date) do
   Link = Data.define(:param_key)
   def formatted_date
-    I18n.l(date, format: '%b %e, %Y')
+    I18n.l(date, format: "%b %e, %Y")
   end
 
   def timestamp
-    I18n.l(date, format: '%F')
+    I18n.l(date, format: "%F")
   end
 
   def model_name
@@ -13,7 +13,7 @@ Urls::Serializer = Data.define(:short, :original, :date) do
   end
 
   def to_key
-    [short]
+    [ short ]
   end
 
   def short_url

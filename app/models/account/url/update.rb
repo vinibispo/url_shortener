@@ -14,11 +14,11 @@ class Account
       case Url::Fetch.new(short_url: old_short_url, account_id:).call
       in [:ok, url]
         url.update(original_url:, short_url:, expired_at:)
-        return [:ok, url] if url.save
+        return [ :ok, url ] if url.save
 
-        [:error, url]
+        [ :error, url ]
       in [:not_found, url]
-        [:not_found, url]
+        [ :not_found, url ]
       end
     end
   end

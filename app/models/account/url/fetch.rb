@@ -9,9 +9,9 @@ class Account
 
     def call
       url = ::Url.find_by(short_url:, account_id:)
-      return [:ok, url] if url.present?
+      return [ :ok, url ] if url.present?
 
-      [:not_found, url]
+      [ :not_found, url ]
     end
   end
 end

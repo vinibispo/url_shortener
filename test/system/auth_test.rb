@@ -14,7 +14,7 @@ class AuthTest < ApplicationSystemTestCase
   test "visiting the account_root redirects to sign_in path" do
     visit account_root_url
 
-    refute_equal current_path, account_root_path
+    assert_not_equal current_path, account_root_path
 
     assert_equal current_path, new_account_session_path
   end
@@ -44,7 +44,7 @@ class AuthTest < ApplicationSystemTestCase
 
     click_on "Sign up"
 
-    refute_equal current_path, account_root_path
+    assert_not_equal current_path, account_root_path
   end
 
   test "filling in the sign in form redirects to account_root" do
@@ -69,7 +69,7 @@ class AuthTest < ApplicationSystemTestCase
 
     click_on "Log in"
 
-    refute_equal current_path, account_root_path
+    assert_not_equal current_path, account_root_path
 
     assert_equal current_path, new_account_session_path
   end
