@@ -64,7 +64,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "pagy", "~> 6.2"
+gem "pagy", "~> 9.1"
 gem "devise"
 gem "page_meta", "~> 1.1"
 
