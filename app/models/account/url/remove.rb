@@ -11,9 +11,9 @@ class Account
       case Url::Fetch.new(short_url:, account_id:).call
       in [:ok, url]
         url.destroy
-        [:ok, url]
+        [ :ok, url ]
       in [:not_found, url]
-        [:not_found, url]
+        [ :not_found, url ]
       end
     end
   end

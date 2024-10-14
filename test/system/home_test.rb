@@ -81,7 +81,7 @@ class HomeTest < ApplicationSystemTestCase
   test "visiting the home and testing the blocklist" do
     visit root_url
 
-    url = File.readlines(Rails.root.join('lib', 'files', 'blocklist.txt')).map(&:chomp).first
+    url = File.readlines(Rails.root.join("lib", "files", "blocklist.txt")).map(&:chomp).first
 
     fill_in "Enter your link", with: url
 
@@ -93,7 +93,7 @@ class HomeTest < ApplicationSystemTestCase
   test "visiting the home and testing the blocklist with more words" do
     visit root_url
 
-    url = File.readlines(Rails.root.join('lib', 'files', 'blocklist.txt')).map(&:chomp).second
+    url = File.readlines(Rails.root.join("lib", "files", "blocklist.txt")).map(&:chomp).second
 
     fill_in "Enter your link", with: "https://#{url}/prohibited"
 

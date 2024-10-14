@@ -13,10 +13,10 @@ class Url::Generate
     link.save if link.errors.empty?
 
     if link.errors.any?
-      return [:error, link]
+      return [ :error, link ]
     end
 
-    [:ok, link]
+    [ :ok, link ]
   end
 
   private
@@ -29,12 +29,12 @@ class Url::Generate
   end
 
   def verify_block(link)
-    blocklist_file = Rails.root.join('lib', 'files', 'blocklist.txt')
+    blocklist_file = Rails.root.join("lib", "files", "blocklist.txt")
     blocklist = File.readlines(blocklist_file).map(&:chomp)
 
     blocklist.each do |word|
       if link.original_url.include?(word)
-        link.errors.add(:original_url, :invalid, message: 'contains blocked words')
+        link.errors.add(:original_url, :invalid, message: "contains blocked words")
         break
       end
     end

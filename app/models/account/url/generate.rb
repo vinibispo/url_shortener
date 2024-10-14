@@ -16,10 +16,10 @@ class Account
 
       if link.errors.any?
         link.short_url = short_url.presence
-        return [:error, link]
+        return [ :error, link ]
       end
 
-      [:ok, link]
+      [ :ok, link ]
     end
 
     private
