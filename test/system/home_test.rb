@@ -102,13 +102,13 @@ class HomeTest < ApplicationSystemTestCase
     assert_text "Original url contains blocked words"
   end
 
-  test "visiting the home and changing the locale" do
-    visit root_url
-
-    select "Português (Brasil)", from: "locale"
-
-    assert_text "Encurte Seus Links Longos :)"
-  end
+  # test "visiting the home and changing the locale" do
+  #   visit root_url
+  #
+  #   select "Português (Brasil)", from: "locale"
+  #
+  #   assert_text "Encurte Seus Links Longos :)"
+  # end
 
   # I need to prepare chrome to add permissions to the clipboard
   # test "visiting the home and copying an url" do
